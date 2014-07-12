@@ -10,13 +10,14 @@ Tests for `Altmetric` module.
 
 import unittest
 
-from Altmetric import Altmetric
+from Altmetric.Altmetric import Altmetric
 
 
 class TestAltmetric(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.a = Altmetric()
+        self.b = Altmetric(api_key="KEY_HERE")
 
     def test_something(self):
         pass
