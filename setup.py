@@ -23,13 +23,13 @@ test_requirements = [
 ]
 
 setup(
-    name='Altmetric',
+    name='Altmetric API Wrapper',
     version='0.1.0',
     description='An api wrapper for Altmetric.com',
     long_description=readme + '\n\n' + history,
     author='Will Earp',
     author_email='will.earp@icloud.com',
-    url='https://github.com/wearp/Altmetric',
+    url='https://github.com/wearp/altmetric-api',
     packages=[
         'Altmetric',
     ],
