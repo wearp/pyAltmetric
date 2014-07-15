@@ -28,6 +28,12 @@ class Altmetric(object):
         def get(self, *args, **kwargs):
             return self.fetch(mode, *args, **kwargs) 
         return get.__get__(self)
+    
+    def __repr__(self):
+        if self.api_key:
+            return '<Altmetric %s: %s>' % (self.api_version, self.api_key)
+        else:
+            return 'Altmetric %s>' % self.api_version
 
     def fetch(self, mode, *args, **kwargs):
         url = self.base_url + mode + "/" + "/".join([a for a in args])
@@ -45,4 +51,9 @@ class Altmetric(object):
             except ValueError as e:
                 raise AltmetricException(e.message)
  
-                
+class Article(object):
+
+    def __init__(self, **article):
+        self.__dict__.update(article)
+
+    
