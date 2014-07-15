@@ -1,16 +1,19 @@
 import json
 import requests
 
+
 class AltmetricException(Exception):
     pass
 
+
 class HTTPException(Exception):
     def __init__(self, status_code, message):
-        super(AltmetricException, self).__init__(status_code, message)
+        super(HTTPException, self).__init__(status_code, message)
         self.status_code = status_code
         self.message = message
 
-class Altmetric:
+
+class Altmetric(object):
 
     host = "http://api.altmetric.com/"
     api_version = "v1/"
@@ -31,13 +34,15 @@ class Altmetric:
         if kwargs != None:
             self.params.update(kwargs)
        
-        response = requests.get(url, params=self.params)
-        if response.status_code == 200:
+        try:
+            response = requests.get(url, params=self.params)
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            raise HTTPException(response.status_code, response.reason)
+        else:
             try:
                 return response.json()
             except ValueError as e:
-                print(e)
-
-
+                raise AltmetricException(e.message)
  
                 

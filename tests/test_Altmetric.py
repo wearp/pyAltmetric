@@ -9,8 +9,8 @@ Tests for `Altmetric` module.
 """
 
 import unittest
-
-from Altmetric.Altmetric import Altmetric
+import requests
+from Altmetric.Altmetric import Altmetric, AltmetricException, HTTPException
 
 
 class TestAltmetric(unittest.TestCase):
@@ -27,10 +27,19 @@ class TestAltmetric(unittest.TestCase):
         self.assertTrue(isinstance(response_2, dict))
 
     def test_fetch_with_404_HTTP_status_code(self):
-        response = self.b.citations("1d", page=1, nlmid="XXXX",)
+        self.assertRaises(HTTPException,
+                lambda: self.b.fetch("citations", "1w", nlmid="xxx"))
+
+    def test_HTTPException(self):
+        self.exception = HTTPException(403, "Unauthorized access")
+        self.assertEqual(self.exception.status_code, 403)
+        self.assertEqual(self.exception.message, "Unauthorized access")
 
     def tearDown(self):
         pass
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
