@@ -10,7 +10,7 @@ Tests for `Altmetric` module.
 
 import unittest
 import requests
-from Altmetric.Altmetric import Altmetric, AltmetricException, HTTPException, Article
+from Altmetric.Altmetric import Altmetric, AltmetricException, HTTPException, Citation
 
 
 class TestAltmetric(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAltmetric(unittest.TestCase):
         pass
 
 
-class TestArticle(unittest.TestCase):
+class TestCitation(unittest.TestCase):
 
     def setUp(self):
         self.a = Altmetric()
@@ -42,9 +42,8 @@ class TestArticle(unittest.TestCase):
     def test_Article__init__(self):
         response = self.a.id("108989")
         self.assertTrue(isinstance(response, dict))
-        article = Article(**response)
+        article = Citation(response)
         self.assertEqual(article.title, "Rebuilding Global Fisheries")
-        self.assertEqual(article.published_on, "test")
 
 
 class TestHttpException(unittest.TestCase):

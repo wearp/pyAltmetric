@@ -51,9 +51,9 @@ class Altmetric(object):
             except ValueError as e:
                 raise AltmetricException(e.message)
  
-class Article(object):
+class Citation(object):
 
-    def __init__(self, **article):
-        self.__dict__.update(article)
-
-    
+    def __init__(self, dic):
+        for k, v in dic.iteritems():
+            setattr(self, k, v)
+         
