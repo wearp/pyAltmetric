@@ -51,9 +51,13 @@ class Altmetric(object):
             except ValueError as e:
                 raise AltmetricException(e.message)
  
+
 class Citation(object):
 
     def __init__(self, dic):
         for k, v in dic.iteritems():
             setattr(self, k, v)
-         
+
+class CitationsReader(object):
+    pass
+ 

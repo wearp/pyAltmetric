@@ -45,6 +45,16 @@ class TestCitation(unittest.TestCase):
         article = Citation(response)
         self.assertEqual(article.title, "Rebuilding Global Fisheries")
 
+    def test_to_fetch_multiple_citations_from_response(self):
+        response = self.a.citations("1d", num_results="100", 
+                page=1, nlmid="0410462")
+        
+        list_of_citations = []
+        for c in response["results"]:
+            list_of_citations.append(Citation(c))
+        for i in list_of_citations:
+            self.assertTrue(isinstance(i.title, unicode))
+
 
 class TestHttpException(unittest.TestCase):
 
