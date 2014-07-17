@@ -10,11 +10,10 @@ Tests for `Altmetric` module.
 
 import unittest
 import requests
-from Altmetric.Altmetric import Altmetric, AltmetricException, HTTPException, Citation
+from Altmetric.Altmetric import Altmetric, AltmetricException, HTTPException, Citation, CitationCollection
 
 
 class TestAltmetric(unittest.TestCase):
-
     def setUp(self):
         self.a = Altmetric()
         self.b = Altmetric()
@@ -35,7 +34,6 @@ class TestAltmetric(unittest.TestCase):
 
 
 class TestCitation(unittest.TestCase):
-
     def setUp(self):
         self.a = Altmetric()
 
@@ -45,19 +43,25 @@ class TestCitation(unittest.TestCase):
         article = Citation(response)
         self.assertEqual(article.title, "Rebuilding Global Fisheries")
 
-    def test_to_fetch_multiple_citations_from_response(self):
-        response = self.a.citations("1d", num_results="100", 
-                page=1, nlmid="0410462")
-        
-        list_of_citations = []
-        for c in response["results"]:
-            list_of_citations.append(Citation(c))
-        for i in list_of_citations:
-            self.assertTrue(isinstance(i.title, unicode))
+
+class TestCitationCollection(unittest.TestCase):
+    def setUp(self):
+        self.a = Altmetric()
+        citation = self.a.id("108989")
+        self.single_citation = Citation(citation)
+        self.collection_a = CitationCollection()
+
+        self.citations = self.a.citations("1d", page=1, nlmid="0410462")
+        self.collection_b = CitationCollection()
+
+    def test_add_citation(self):
+        self.collection_a.add_citation(self.single_citation)
+        self.assertTrue(isinstance(self.collection_a.citations[0], Citation))
+        self.assertEqual(self.collection_a.citations[0].title, 
+                "Rebuilding Global Fisheries")
 
 
 class TestHttpException(unittest.TestCase):
-
     def setUp(self):
         self.a = HTTPException(403, "Unauthorized access")
 
