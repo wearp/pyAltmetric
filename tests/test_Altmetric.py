@@ -18,14 +18,14 @@ class TestAltmetric(unittest.TestCase):
         self.a = Altmetric()
         self.b = Altmetric()
 
-    def test_fetch_with_200_HTTP_status_code(self):
+    def test_fetch_that_is_successful(self):
         response = self.a.fetch("citations", "1w", page=1, nlmid="0410462",)
         self.assertEqual(self.a.params, {'nlmid': '0410462', 'page': 1})
         self.assertTrue(isinstance(response, dict))
         response_2 = self.a.citations("1w", page=1, nlmid="0410462",)
         self.assertTrue(isinstance(response_2, dict))
 
-    def test_fetch_with_40X_HTTP_status_code(self):
+    def test_fetch_that_raises_HTTP_exception(self):
         self.assertRaises(HTTPException,
                 lambda: self.b.fetch("citations", "1w", nlmid="xxx"))
 
@@ -35,12 +35,12 @@ class TestAltmetric(unittest.TestCase):
 
 class TestCitation(unittest.TestCase):
     def setUp(self):
-        self.a = Altmetric()
+        a = Altmetric()
+        self.response = a.id("108989")
 
     def test_Article__init__(self):
-        response = self.a.id("108989")
-        self.assertTrue(isinstance(response, dict))
-        article = Citation(response)
+        self.assertTrue(isinstance(self.response, dict))
+        article = Citation(self.response)
         self.assertEqual(article.title, "Rebuilding Global Fisheries")
 
 
@@ -54,12 +54,21 @@ class TestCitationCollection(unittest.TestCase):
         self.citations = self.a.citations("1d", page=1, nlmid="0410462")
         self.collection_b = CitationCollection()
 
-    def test_add_citation(self):
+    def test_add_citation_with_one_citation_object(self):
         self.collection_a.add_citation(self.single_citation)
         self.assertTrue(isinstance(self.collection_a.citations[0], Citation))
         self.assertEqual(self.collection_a.citations[0].title, 
                 "Rebuilding Global Fisheries")
 
+    def test_add_citation_with_multiple_citation_objects(self):
+        i = self.citations['results'][0]
+        p = self.citations['results'][1]
+        
+        self.collection_b.add_citation(Citation(i), Citation(p))
+        self.assertTrue(isinstance(self.collection_b.citations[0].title, 
+                unicode)) 
+        self.assertTrue(isinstance(self.collection_b.citations[1].title,
+                unicode))
 
 class TestHttpException(unittest.TestCase):
     def setUp(self):

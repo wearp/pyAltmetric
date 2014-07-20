@@ -57,7 +57,7 @@ class Citation(object):
     def __init__(self, dic):
         for k, v in dic.iteritems():
             setattr(self, k, v)
-
+         
 
 class CitationCollection(object):
     
@@ -66,3 +66,5 @@ class CitationCollection(object):
 
     def add_citation(self, *Citation):
         self.citations.extend(Citation)
+
+
