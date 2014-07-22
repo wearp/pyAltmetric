@@ -57,14 +57,28 @@ class Citation(object):
     def __init__(self, dic):
         for k, v in dic.iteritems():
             setattr(self, k, v)
-         
+
+    def __iter__(self):
+        for i in (vars(self)):
+            yield i, getattr(self, i)
+
+    def get_fields(self, *args):
+        """
+        Returns a list containing values of the named fields in '*args'. 
+        If named field does not exist, an empty string is returned to the list.
+        """
+        return [getattr(self, field, '') for field in args]
 
 class CitationCollection(object):
     
     def __init__(self):
         self.citations = list()
 
-    def add_citation(self, *Citation):
-        self.citations.extend(Citation)
+    def add_citation(self, *args):
+        """
+        Adds a Citation instance, or instances to CitationCollection.
+        """
+        self.citations.extend(args)
+
 
 

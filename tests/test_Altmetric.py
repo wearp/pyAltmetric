@@ -43,16 +43,29 @@ class TestCitation(unittest.TestCase):
         article = Citation(self.response)
         self.assertEqual(article.title, "Rebuilding Global Fisheries")
 
+    def test_get_fields(self):
+        article = Citation(self.response)
+        fields = article.get_fields('title', 'nlmid')
+        self.assertEqual(fields[0], "Rebuilding Global Fisheries")
+        self.assertEqual(fields[1], "0404511")
+
+    def test_get_fields_with_nonexitent_attribute(self):
+        article = Citation(self.response)
+        fields = article.get_fields('title', 'nonexistent', 'nlmid')
+        self.assertEqual(fields[0], "Rebuilding Global Fisheries")
+        self.assertEqual(fields[1], "")
+        self.assertEqual(fields[2], "0404511")
+
 
 class TestCitationCollection(unittest.TestCase):
     def setUp(self):
         self.a = Altmetric()
+        self.collection_a = CitationCollection()
+        self.collection_b = CitationCollection()
+        
         citation = self.a.id("108989")
         self.single_citation = Citation(citation)
-        self.collection_a = CitationCollection()
-
         self.citations = self.a.citations("1d", page=1, nlmid="0410462")
-        self.collection_b = CitationCollection()
 
     def test_add_citation_with_one_citation_object(self):
         self.collection_a.add_citation(self.single_citation)
@@ -65,10 +78,9 @@ class TestCitationCollection(unittest.TestCase):
         p = self.citations['results'][1]
         
         self.collection_b.add_citation(Citation(i), Citation(p))
-        self.assertTrue(isinstance(self.collection_b.citations[0].title, 
-                unicode)) 
-        self.assertTrue(isinstance(self.collection_b.citations[1].title,
-                unicode))
+        self.assertTrue(isinstance(self.collection_b.citations[0], Citation)) 
+        self.assertTrue(isinstance(self.collection_b.citations[1], Citation))
+ 
 
 class TestHttpException(unittest.TestCase):
     def setUp(self):
@@ -77,6 +89,7 @@ class TestHttpException(unittest.TestCase):
     def test_HTTPException(self):
         self.assertEqual(self.a.status_code, 403)
         self.assertEqual(self.a.message, "Unauthorized access")
+
 
 if __name__ == '__main__':
     unittest.main()
