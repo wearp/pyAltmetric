@@ -33,7 +33,7 @@ class Altmetric(object):
         if self.api_key:
             return '<Altmetric %s: %s>' % (self.api_version, self.api_key)
         else:
-            return 'Altmetric %s>' % self.api_version
+            return '<Altmetric %s>' % self.api_version
 
     def fetch(self, mode, *args, **kwargs):
         url = self.base_url + mode + "/" + "/".join([a for a in args])
