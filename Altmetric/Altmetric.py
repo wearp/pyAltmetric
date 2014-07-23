@@ -58,6 +58,9 @@ class Citation(object):
         for field, value in dic.iteritems():
             setattr(self, field, value)
 
+    def __repr__(self):
+        return '<Citation %s: %s>' % (self.altmetric_id, self.title)
+
     def __iter__(self):
         """Each iteration returns a field, value tuple."""
         for field, value in (vars(self)).iteritems():
@@ -75,6 +78,16 @@ class CitationCollection(object):
     
     def __init__(self):
         self.citations = list()
+
+    def __iter__(self):
+        self.__pos = 0
+        return self
+
+    def next(self):
+        if self.__pos >= len(self.citations):
+            raise StopIteration
+        self.__pos += 1
+        return self.citations[self.__pos - 1]
 
     def add_citation(self, *args):
         """Adds a Citation instance, or instances to CitationCollection."""

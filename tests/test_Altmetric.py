@@ -85,6 +85,14 @@ class TestCitationCollection(unittest.TestCase):
         self.assertTrue(isinstance(self.collection_b.citations[0], Citation)) 
         self.assertTrue(isinstance(self.collection_b.citations[1], Citation))
  
+    def test__iter__(self):
+        i = self.citations['results'][0]
+        p = self.citations['results'][1]
+        x = self.citations['results'][2]
+    
+        self.collection_b.add_citation(Citation(i), Citation(p), Citation(x))
+        for x in self.collection_b:
+            print x
 
 class TestHttpException(unittest.TestCase):
     def setUp(self):
