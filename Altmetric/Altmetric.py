@@ -55,12 +55,13 @@ class Altmetric(object):
 class Citation(object):
 
     def __init__(self, dic):
-        for k, v in dic.iteritems():
-            setattr(self, k, v)
+        for field, value in dic.iteritems():
+            setattr(self, field, value)
 
     def __iter__(self):
-        for i in (vars(self)):
-            yield i, getattr(self, i)
+        """Each iteration returns a field, value tuple."""
+        for field, value in (vars(self)).iteritems():
+            yield field, value
 
     def get_fields(self, *args):
         """
@@ -69,15 +70,14 @@ class Citation(object):
         """
         return [getattr(self, field, '') for field in args]
 
+
 class CitationCollection(object):
     
     def __init__(self):
         self.citations = list()
 
     def add_citation(self, *args):
-        """
-        Adds a Citation instance, or instances to CitationCollection.
-        """
+        """Adds a Citation instance, or instances to CitationCollection."""
         self.citations.extend(args)
 
 
