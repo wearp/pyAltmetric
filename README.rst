@@ -8,7 +8,7 @@ Altmetric API Wrapper
 .. image:: https://travis-ci.org/wearp/Altmetric.png?branch=master
         :target: https://travis-ci.org/wearp/Altmetric
 
-.. image:: https://pypip.in/d/Altmetric/badge.png
+.. image:: https://pypip.in/d/altmetric-api-wrapper/badge.png
         :target: https://pypi.python.org/pypi/altmetric-api-wrapper/0.1
 
 
