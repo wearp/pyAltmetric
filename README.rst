@@ -2,9 +2,9 @@
 Altmetric API Wrapper
 ===============================
 
-.. image:: https://badge.fury.io/py/Altmetric.png
-    :target: http://badge.fury.io/py/Altmetric
-
+.. image:: https://badge.fury.io/py/altmetric-api-wrapper.png
+    :target: http://badge.fury.io/py/altmetric-api-wrapper/0.1
+    
 .. image:: https://travis-ci.org/wearp/Altmetric.png?branch=master
         :target: https://travis-ci.org/wearp/Altmetric
 
