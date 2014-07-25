@@ -5,7 +5,7 @@ altmetric-api
 .. image:: https://badge.fury.io/py/altmetric-api-wrapper.png
     :target: http://badge.fury.io/py/altmetric-api-wrapper
 
-altmetric-api is a python wrapper for [Altmetric API v1](http://api.altmetric.com). It provides an API for downloading and reading citations both individually and in bulk.
+altmetric-api is a python wrapper for `Altmetric API v1 <http://api.altmetric.com>`_. It provides an API for downloading and reading citations both individually and in bulk.
 
 Installation
 ------------
