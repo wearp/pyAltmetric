@@ -3,25 +3,19 @@ altmetric-api
 ===============================
 
 .. image:: https://badge.fury.io/py/altmetric-api-wrapper.png
-    :target: http://badge.fury.io/py/altmetric-api-wrapper/0.1
-    
-.. image:: https://travis-ci.org/wearp/Altmetric.png?branch=master
-        :target: https://travis-ci.org/wearp/Altmetric
-
-.. image:: https://pypip.in/d/altmetric-api-wrapper/badge.png
-        :target: https://pypi.python.org/pypi/altmetric-api-wrapper/0.1
-
+    :target: http://badge.fury.io/py/altmetric-api-wrapper
 
 altmetric-api is a python wrapper for [Altmetric API v1](http://api.altmetric.com). It provides an API for downloading and reading citations both individually and in bulk.
 
-Installation::
-------------
+Installation
+------------::
 
     pip install altmetric-api
 
 Usage
 -----
 **Fetching by individual citations by identifiers**::
+    from altmetric import Altmetric
 
     a = Altmetric()
     a.id("241939")
@@ -34,25 +28,34 @@ Usage
 
 **Querying the Altmetric.com database**::
 
-    b = Altmetric()
-    b.citations("1w", page=1, nlmid="0410462")
+    a = Altmetric()
+    a.citations("1w", page=1, nlmid="0410462")
 
 **Reading a citation**::
+    from altmetric import Citation
 
-    c = Altmetric()
-    d = a.id("241939")
+    a = Altmetric()
+    b = a.id("241939")
 
-    e = Citation(d)
-    print e
-    print e.title
-    for field in e:
+    c = Citation(b)
+    print c
+    print c.title
+    for field in c:
         print field
 
+**Reading multiple citations**::
+    form altmetric import CitationCollection
 
+    a = Altmetric()
+    b = Citation(a.id("241939"))
+    c = Citation(a.doi("10.1038/news.2011.490"))
+
+    d = CitationCollection()
+    d.add_citation(b, c)
+
+    for citation in c:
+        print citation
+    
 * Free software: BSD license
-* Documentation: http://Altmetric.readthedocs.org.
 
-Features
---------
 
-* TODO
