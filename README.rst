@@ -7,8 +7,9 @@ altmetric-api
 
 altmetric-api is a python wrapper for [Altmetric API v1](http://api.altmetric.com). It provides an API for downloading and reading citations both individually and in bulk.
 
-Installation::
+Installation
 ------------
+::
 
     pip install altmetric-api
 
