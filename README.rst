@@ -16,6 +16,7 @@ Installation
 Usage
 -----
 **Fetching by individual citations by identifiers**::
+    
     from altmetric import Altmetric
 
     a = Altmetric()
@@ -33,6 +34,7 @@ Usage
     a.citations("1w", page=1, nlmid="0410462")
 
 **Reading a citation**::
+    
     from altmetric import Citation
 
     a = Altmetric()
@@ -45,6 +47,7 @@ Usage
         print field
 
 **Reading multiple citations**::
+    
     form altmetric import CitationCollection
 
     a = Altmetric()
