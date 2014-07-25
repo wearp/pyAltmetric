@@ -9,7 +9,7 @@ Altmetric API Wrapper
         :target: https://travis-ci.org/wearp/Altmetric
 
 .. image:: https://pypip.in/d/Altmetric/badge.png
-        :target: https://pypi.python.org/pypi/Altmetric
+        :target: https://pypi.python.org/pypi/altmetric-api-wrapper/0.1
 
 
 An api wrapper for Altmetric.com
