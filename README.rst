@@ -20,6 +20,7 @@ Usage
     from altmetric import Altmetric
 
     a = Altmetric()
+
     a.id("241939")
     a.doi("10.1038/news.2011.490")
     a.pmid("21148220")
@@ -30,19 +31,17 @@ Usage
 
 **Querying the Altmetric.com database**::
 
-    a = Altmetric()
     a.citations("1w", page=1, nlmid="0410462")
 
 **Reading a citation**::
     
     from altmetric import Citation
 
-    a = Altmetric()
     b = a.id("241939")
-
     c = Citation(b)
-    print c
+
     print c.title
+    
     for field in c:
         print field
 
@@ -50,7 +49,6 @@ Usage
     
     form altmetric import CitationCollection
 
-    a = Altmetric()
     b = Citation(a.id("241939"))
     c = Citation(a.doi("10.1038/news.2011.490"))
 
