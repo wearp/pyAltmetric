@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .Altmetric import Altmetric, AltmetricException, HTTPException, \
+from .pyaltmetric import Altmetric, AltmetricException, HTTPException, \
         Citation, CitationCollection
         
 __author__ = 'Will Earp'
