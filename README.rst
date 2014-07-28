@@ -1,23 +1,23 @@
 ===============================
-altmetric-api
+pyAltmetric
 ===============================
 
-.. image:: https://badge.fury.io/py/altmetric-api-wrapper.png
-    :target: http://badge.fury.io/py/altmetric-api-wrapper
+.. image:: https://badge.fury.io/py/pyaltmetric.png
+    :target: http://badge.fury.io/py/pyaltmetric
 
-altmetric-api is a python wrapper for `Altmetric API v1 <http://api.altmetric.com>`_. It provides an API for downloading and reading citations both individually and in bulk.
+pyAltmetric is a python wrapper for `Altmetric API v1 <http://api.altmetric.com>`_. It provides an API for downloading and reading citations both individually and in bulk.
 
 Installation
 ------------
 ::
 
-    pip install altmetric-api
+    pip install pyaltmetric
 
 Usage
 -----
 **Fetching by individual citations by identifiers**::
     
-    from altmetric import Altmetric
+    from pyaltmetric import Altmetric
 
     a = Altmetric()
 
@@ -35,7 +35,7 @@ Usage
 
 **Reading a citation**::
     
-    from altmetric import Citation
+    from pyaltmetric import Citation
 
     b = a.id("241939")
     c = Citation(b)
@@ -47,7 +47,7 @@ Usage
 
 **Reading multiple citations**::
     
-    form altmetric import CitationCollection
+    form pyaltmetric import CitationCollection
 
     b = Citation(a.id("241939"))
     c = Citation(a.doi("10.1038/news.2011.490"))

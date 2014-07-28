@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(
-    name='pyAltmetric',
+    name='pyaltmetric',
     version='0.1',
     description='Python Altmetric API v1 wrapper',
     long_description=open('README.rst').read(),
