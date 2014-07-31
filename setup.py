@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='pyaltmetric',
-    version='0.1',
+    version='0.1.1',
     packages=['pyaltmetric'],
     description='Python Altmetric API v1 wrapper',
     long_description=open('README.rst').read(),
