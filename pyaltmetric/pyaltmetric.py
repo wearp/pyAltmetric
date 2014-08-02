@@ -44,6 +44,8 @@ class Altmetric(object):
             response = requests.get(url, params=self.params)
             response.raise_for_status()
         except requests.exceptions.HTTPError:
+            if response.status_code == 404 and response.reason == 'Not Found':
+                return None
             raise HTTPException(response.status_code, response.reason)
         else:
             try:
