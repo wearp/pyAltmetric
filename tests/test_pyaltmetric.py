@@ -60,10 +60,6 @@ class TestCitation(unittest.TestCase):
         self.assertEqual(fields[1], "")
         self.assertEqual(fields[2], "0404511")
 
-    def test__iter__(self):
-        article = Citation(self.response)
-        for i in article:
-            self.assertTrue(isinstance(i, tuple)) 
 
 class TestCitationCollection(unittest.TestCase):
     def setUp(self):

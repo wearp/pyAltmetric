@@ -60,22 +60,34 @@ class Citation(object):
         for field, value in dic.iteritems():
             setattr(self, field, value)
 
-    def __repr__(self):
-        return '<Citation %s: %s>' % (self.altmetric_id, self.title)
-
-    def __iter__(self):
-        """Each iteration returns a field, value tuple."""
-        for field, value in (vars(self)).iteritems():
-            yield field, value
-
     def get_fields(self, *args):
         """
         Returns a list containing values of the named fields in '*args'. 
         If named field does not exist, an empty string is returned to the list.
         """
         return [getattr(self, field, '') for field in args]
+    
+    def __repr__(self):
+        stats = self.get_fields('title', 'doi', 'journal', 
+            'cited_by_posts_count', 'cited_by_tweeters_count', 
+            'cited_by_fbwalls_count', 'cited_by_gplus_count',
+            'cited_by_rdts_count', 'cited_by_feeds_count')
+        
+        for i in range(len(stats)):
+            if not stats[i]:
+                stats[i] = '0'
 
-
+        return ('Altmetrics on: "{0}" with doi {1} published in {2}.\n' 
+                '{3:10s} {4:>4}\n'
+                '{5:10s} {6:>4}\n'
+                '{7:10s} {8:>4}\n'
+                '{9:10s} {10:>4}\n'
+                '{11:10s} {12:>4}\n'
+                '{13:10s} {14:>4}\n').format(stats[0], stats[1], stats[2],
+                            'All Posts', stats[3], 'Tweets', stats[4], 
+                            'Facebook', stats[5], 'Google+', stats[6],
+                            'Reddit', stats[7], 'Blogs', stats[8])
+ 
 class CitationCollection(object):
     
     def __init__(self):
