@@ -74,14 +74,14 @@ class Citation(object):
     Usage:
         
         a = Altmetric()
-        b = a.doi('10.1038/nature1379')
+        c = a.id("108989")  
         
-        c = Citation(b)
+        c = Citation(b) # or Citation(a.id("108989"))
         print c.title
     """
     def __init__(self, dic):
         # 'altmetric_id' is a required field in a citation
-        if 'altmetric_id' in dic:
+        if 'title' in dic:
             for field, value in dic.iteritems():
                 setattr(self, field, value)
         else:

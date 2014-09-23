@@ -35,12 +35,24 @@ Usage
 
 **Reading a citation**::
     
-    from pyaltmetric import Citation
+    
+    >>> from pyaltmetric import Altmetric, Citation
+    >>>
+    >>> b = a.id("241939")
+    >>> c = Citation(b)
+    >>> print c.title
+    u'Rebuilding Global Fisheries'
+    >>> c
+    Altmetrics on: "Rebuilding Global Fisheries" with doi 10.1126/science.1173146 published in Science.
 
-    b = a.id("241939")
-    c = Citation(b)
+    All Posts      14
+    Tweets          6
+    Facebook        1
+    Google+         0
+    Reddit          0
+    Blogs           2
 
-    print c.title, c.cited_by_tweeters_count 
+    >>>
  
 * Free software: BSD license
 
