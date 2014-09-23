@@ -67,10 +67,25 @@ class Altmetric(object):
  
 
 class Citation(object):
+    """
+    Initialized using a single citation response object. These are
+    succesful responses from all modes ('doi', 'id', etc.), except 'citations'.
 
+    Usage:
+        
+        a = Altmetric()
+        b = a.doi('10.1038/nature1379')
+        
+        c = Citation(b)
+        print c.title
+    """
     def __init__(self, dic):
-        for field, value in dic.iteritems():
-            setattr(self, field, value)
+        # 'altmetric_id' is a required field in a citation
+        if 'altmetric_id' in dic:
+            for field, value in dic.iteritems():
+                setattr(self, field, value)
+        else:
+            raise AltmetricException("Not a valid citation object")
 
     def get_fields(self, *args):
         """

@@ -41,11 +41,17 @@ class TestCitation(unittest.TestCase):
     def setUp(self):
         a = Altmetric()
         self.response = a.id("108989")
-
+        b = Altmetric() 
+        self.response_2 = b.citations("1w", page=1, nlmid="0410462",)
+    
     def test_Article__init__(self):
         self.assertTrue(isinstance(self.response, dict))
         article = Citation(self.response)
         self.assertEqual(article.title, "Rebuilding Global Fisheries")
+
+    def test_Article__init__with_citations(self):
+        self.assertRaises(AltmetricException,
+                lambda: Citation(self.response_2))
 
     def test_get_fields(self):
         article = Citation(self.response)
@@ -59,6 +65,9 @@ class TestCitation(unittest.TestCase):
         self.assertEqual(fields[0], "Rebuilding Global Fisheries")
         self.assertEqual(fields[1], "")
         self.assertEqual(fields[2], "0404511")
+
+    def tearDown(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
