@@ -16,7 +16,7 @@ class HTTPException(Exception):
 class Altmetric(object):
     """
     Altmetric builds a URL to query the Altmetric.com database. The response 
-    object will be JSON, which will be returned as a dict.
+    from Altmetric is a dict.
     
     Usage:
 
@@ -68,8 +68,9 @@ class Altmetric(object):
 
 class Citation(object):
     """
-    Initialized using a single citation response object. These are
-    succesful responses from all modes ('doi', 'id', etc.), except 'citations'.
+    Citation is initialized using a response object from the Altmetric class. 
+    These are succesful responses from all modes ('doi', 'id', etc.), 
+    except 'citations'.
 
     Usage:
         
