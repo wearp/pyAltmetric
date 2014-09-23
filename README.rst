@@ -42,6 +42,7 @@ Usage
     >>> c = Citation(b)
     >>> print c.title
     u'Rebuilding Global Fisheries'
+    >>>
     >>> c   # provides a snapshot of a citation's coverage across platforms.
     Altmetrics on: "Rebuilding Global Fisheries" with doi 10.1126/science.1173146 
     published in Science.
