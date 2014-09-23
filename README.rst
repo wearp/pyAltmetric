@@ -40,24 +40,8 @@ Usage
     b = a.id("241939")
     c = Citation(b)
 
-    print c.title
-    
-    for field in c:
-        print field
-
-**Reading multiple citations**::
-    
-    form pyaltmetric import CitationCollection
-
-    b = Citation(a.id("241939"))
-    c = Citation(a.doi("10.1038/news.2011.490"))
-
-    d = CitationCollection()
-    d.add_citation(b, c)
-
-    for citation in c:
-        print citation
-    
+    print c.title, c.cited_by_tweeters_count 
+ 
 * Free software: BSD license
 
 
