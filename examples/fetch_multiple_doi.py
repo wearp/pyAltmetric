@@ -15,7 +15,6 @@ citations = []
 a = Altmetric()
 
 # iterate through DOIs fetching each citation from api.altmetric.com
-# Altmetric will return None if there's no details available for the doi.
 for i in dois: 
     citation = a.doi(i)
     citations.append(citation)
