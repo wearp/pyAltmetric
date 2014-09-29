@@ -15,7 +15,9 @@ Installation
 
 Usage
 -----
-**Fetching by individual citations by identifiers**::
+**Fetching by individual citations by identifiers**
+
+You can fetch individual citations using DOI, PubMed ID, arxiv and ADS bibcode identifiers.::
     
     from pyaltmetric import Altmetric
 
@@ -24,26 +26,31 @@ Usage
     a.id("241939")
     a.doi("10.1038/news.2011.490")
     a.pmid("21148220")
-    a.rxiv("1108.2455")
+    a.arxiv("1108.2455")
     a.ads("2012apphl.100y3104b")
 
     a = Altmetric("api_key_goes_here")
 
-**Querying the Altmetric.com database**::
+**Querying the Altmetric.com database**
+
+You can query the Altmetric.com for a list of articles in a give timeframe. For more information on parameters see `Querying the Database <http://api.altmetric.com/docs/call_citations.html>`_::
 
     a.citations("1w", page=1, nlmid="0410462")
 
-**Reading a citation**::
+**Reading a citation**
     
-    
+Citation object provides an friendly interface for accessing citation attributes.::
+
     >>> from pyaltmetric import Altmetric, Citation
     >>>
     >>> b = a.id("241939")
     >>> c = Citation(b)
     >>> print c.title
     u'Rebuilding Global Fisheries'
-    >>>
-    >>> c   # provides a snapshot of a citation's coverage across platforms.
+
+Using Citation, you can get a taste for the citation's impact across multiple platforms.::
+
+    >>> c
     Altmetrics on: "Rebuilding Global Fisheries" with doi 10.1126/science.1173146 
     published in Science.
 
@@ -55,7 +62,13 @@ Usage
     Blogs           2
 
     >>>
- 
-* Free software: BSD license
+
+Copyright
+---------
+Copyright (c) 2014 Will Earp
+
+License
+-------
+Free software: BSD license
 
 
