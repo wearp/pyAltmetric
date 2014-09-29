@@ -1,6 +1,6 @@
 # fetch_multiple_doi.py
 #
-# This examples show how to use pyAltmetric to make multiple calls for 
+# This example shows how to use pyAltmetric to make multiple calls for 
 # citations using a list of DOIs (Digital Object Identifier).
 #
 from pyaltmetric import Altmetric, Citation
