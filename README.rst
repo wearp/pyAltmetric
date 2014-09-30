@@ -17,7 +17,7 @@ Usage
 -----
 **Fetching by individual citations by identifiers**
 
-You can fetch individual citations using DOI, PubMed ID, arxiv and ADS bibcode identifiers::
+You can fetch individual citations using DOI, PubMed ID, arxiv and ADS bibcode identifiers. A successful call will return a python dictionary::
     
     from pyaltmetric import Altmetric
 
@@ -39,7 +39,7 @@ You can query the Altmetric.com for a list of articles in a give timeframe. For 
 
 **Reading a citation**
     
-Citation provides an friendly interface for accessing citation attributes::
+pyAltmetric has a Citation object provides an friendly interface for accessing citation attributes. Its `get_fields()` method allows the retrieval of multiple attributes.::
 
     >>> from pyaltmetric import Altmetric, Citation
     >>>
@@ -48,7 +48,7 @@ Citation provides an friendly interface for accessing citation attributes::
     >>> print c.title
     u'Rebuilding Global Fisheries'
 
-Using Citation, you can get a taste for the citation's impact across multiple platforms::
+Using Citation, you can get a taste for a citation's impact across multiple platforms::
 
     >>> c
     Altmetrics on: "Rebuilding Global Fisheries" with doi 10.1126/science.1173146 
