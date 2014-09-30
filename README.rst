@@ -39,7 +39,7 @@ You can query the Altmetric.com for a list of articles in a give timeframe. For 
 
 **Reading a citation**
     
-pyAltmetric has a Citation object provides an friendly interface for accessing citation attributes. Its `get_fields()` method allows the retrieval of multiple attributes.::
+pyAltmetric has a Citation object provides an friendly interface for accessing citation attributes. Citation's ``get_fields()`` method allows the retrieval of multiple attributes::
 
     >>> from pyaltmetric import Altmetric, Citation
     >>>
