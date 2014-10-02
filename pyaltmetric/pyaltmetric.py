@@ -82,7 +82,7 @@ class Citation(object):
     """
     def __init__(self, dic):
         # 'altmetric_id' is a required field in a citation
-        if 'title' in dic:
+        if 'altmetric_id' in dic:
             for field, value in dic.iteritems():
                 setattr(self, field, value)
         else:
