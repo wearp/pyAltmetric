@@ -66,7 +66,7 @@ Using Citation, you can get a taste for a citation's impact across multiple plat
 More examples
 -------------
 * `Using DOIs to fetch multiple citations <https://github.com/wearp/pyAltmetric/blob/master/examples/fetch_multiple_doi.py>`_
-* `Creating a CSV file of citations using get_fields() <https://github.com/wearp/blob/pyaltmetric/citations_to_csv.py>`_
+* `Creating a CSV file of citations using get_fields() <https://github.com/wearp/blob/master/pyaltmetric/citations_to_csv.py>`_
 
 Copyright
 ---------
