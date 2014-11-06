@@ -1,7 +1,5 @@
 from pyaltmetric import Altmetric, Citation, HTTPException
-
 import csv
-import json
 
 # initialize Altmetric
 a = Altmetric()
@@ -11,8 +9,7 @@ with open('doi.list', 'r') as infile:
         writer = csv.writer(outfile)
 
         for x in infile:
-            x = x.rstrip()
-            
+            x = x.rstrip() 
             # search for article using doi
             c = a.doi(x)
             if c:

@@ -9,15 +9,12 @@ import json
 # list of target DOIs 
 dois = ('10.1038/news.2011.49', '10.1038/nj7361-479a', '10.1136/bmj.c6801',
         '10.1038/nature.2014.14583', '10.1038/news.2011.498')
-citations = []
 
 # initialize an Altmetric instance
 a = Altmetric()
 
 # iterate through DOIs fetching each citation from api.altmetric.com
-for i in dois: 
-    citation = a.doi(i)
-    citations.append(citation)
+citations = map(a.doi, dois)
 
 # write citation objects as json to a file
 with open('citations_as_json.txt', 'w+') as outfile:
