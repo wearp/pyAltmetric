@@ -45,8 +45,8 @@ pyAltmetric has a Citation object provides an friendly interface for accessing c
     >>>
     >>> b = a.id("241939")
     >>> c = Citation(b)
-    >>> print c.title
-    u'Rebuilding Global Fisheries'
+    >>> print(c.title)
+    'Rebuilding Global Fisheries'
 
 Using Citation, you can get a taste for a citation's impact across multiple platforms::
 
